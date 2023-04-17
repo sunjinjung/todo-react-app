@@ -12,6 +12,14 @@ class App extends React.Component {
                 {id:"todo1", title:"Todo 2 ", done:false},
             ],
         };
+    }
+    add =(item)=>{
+        const thisItems =this.state.items;
+        item.id ="ID-"+ thisItems.length;//key를 위한 id 추가
+        item.done =false;
+        thisItems.push(item);
+        this.setState({items:thisItems});//update state
+        console.log("items:",this.state.items);
     } 
     render(){ 
         // todoItems에 this.state.items.length 가 0보다 크다면 true 이므로 && 뒤에 값을 넘겨준다. // totoItem = this.state.items.length > 0 ? (<Paper></Paper>):""; 이렇게 해도 같은 결과이다. 조건선택문 ? ternary operator
@@ -22,6 +30,15 @@ class App extends React.Component {
                 <Todo item={item} key={item.id}/>
                 ))} </List>
                 </Paper>
-                ); }
+                );
+                return (
+                    <div className="App">
+                        <Container maxWidth="md">
+                            <AddTodo add={this.add}/>
+                            <div className="TodoList">{todoItems}</div>
+                            </Container>
+                            </div>
+                    );
+            }
 }
 export default App;
