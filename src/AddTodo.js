@@ -2,8 +2,7 @@ import React from "react";
 import { TextField, Paper, Button, Grid }from "@material-ui/core";
 class AddTodo extends React.Component {
     constructor(props){
-        super(props);
-        this.state ={item :{title:""}};
+        super(props); this.state ={item :{title:""}};
         this.add = props.add;// props 의 함수를 this.add 에 연결, props에는 상위 컴포넌트(App.js)의 함수, 매개변수가 들어 있음.
     }
     onInputChange =(e)=>{
@@ -16,16 +15,14 @@ class AddTodo extends React.Component {
         this.setState({item:{title:""}});// text 값을 추가하고 입력 필드는 초기화시킨다.
     }
     enterKeyEventHandler =(e)=>{
-        if(e.key ==='Enter'){
-            this.onButtonClick();
-        }
+        if(e.key ==='Enter'){ this.onButtonClick(); }
     }
     render(){
         return (
         <Paper style={{margine:16, padding:16}}>
             <Grid container>
                 <Grid xs={11} md={11} item style={{paddingRight:16}}>
-                    <TextField 
+                    <TextField
                     placehoder="Add Todo here" 
                     fullWidth 
                     onChange={this.onInputChange}
@@ -34,9 +31,9 @@ class AddTodo extends React.Component {
                     />
                     </Grid>
                     <Grid xs={1} md={1} item>
-                        <Button 
-                        fullWidth 
-                        color="secondary" 
+                        <Button
+                        fullWidth
+                        color="secondary"
                         variant="outlined"
                         onClick={this.onButtonClick}
                         >
@@ -46,6 +43,6 @@ class AddTodo extends React.Component {
                             </Grid>
                             </Paper>
                             );
-                    }
+                        }
 }
 export default AddTodo;
